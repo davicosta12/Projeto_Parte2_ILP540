@@ -32,17 +32,21 @@ inputTelefone.addEventListener("focus", () => {
 });
 
 confirmBtn.addEventListener("click", event => {
-    console.log()
-    if (!inputName.value || !inputEmail.value ||
-        !inputTelefone.value || !textarea.value) {
-        alert("Não deixe nenhum campo vazio!");
-        event.preventDefault();
-    }
+    let erros = [];
+    
+    if (!validateNome(inputName.value))
+    erros.push("O nome deve conter ao menos três letras, e não pode conter números");
+    
+    if (!validateEmail(inputEmail.value))
+    erros.push("Digite um email válido");
+    
+    if (!validateTelefone(inputTelefone.value))
+    erros.push("O telefone deve ter ao menos 9 números");
 
-    if (isNaN(inputTelefone.value)) {
-        alert("Digite somente números no campo telefone!");
-        event.preventDefault();
-    }
+    if (!validateMsg(textarea.value))
+        erros.push("A mensagem deve ter ao menos 5 caracteres");
+
+    alerta(erros, event);
 
 });
 
@@ -53,3 +57,32 @@ btnLimpar.addEventListener("click", event => {
     textarea.value = "";
     event.preventDefault();
 });
+
+function validateEmail(email) {
+    const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return reg.test(String(email).toLowerCase());
+}
+
+function validateMsg(msg) {
+    if(!msg || msg.length<5)
+        return false;
+    return true;
+}
+function validateNome(nome) {
+    const reg = /[0-9]/;
+    if(!nome || nome.length<3 || reg.test(nome))
+        return false;
+    return true;
+}
+function validateTelefone(telefone) {
+    if (!telefone || isNaN(telefone) || telefone.length < 9)
+        return false
+    return true
+}
+
+function alerta(erros, event) {
+    if (erros.length > 0){
+        alert(erros.join("\n"));
+        event.preventDefault();
+    }
+}

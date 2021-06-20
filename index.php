@@ -2,7 +2,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "davi10";
+$password = "";
 $dbname = "mydb";
 
 // dados do formulário
@@ -36,9 +36,9 @@ if($db) {
     // sql para criar a tabela
     $sql = "CREATE TABLE MyGuests (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(28) NOT NULL,
-    email VARCHAR(28) NOT NULL,
-    telefone VARCHAR(11) NOT NULL,
+    nome VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    telefone VARCHAR(13) NOT NULL,
     mensagem VARCHAR(75) NOT NULL
     )";
     
