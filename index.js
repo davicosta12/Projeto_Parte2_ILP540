@@ -34,20 +34,19 @@ inputTelefone.addEventListener("focus", () => {
 confirmBtn.addEventListener("click", event => {
     let erros = [];
     
-    if (!validateNome(inputName.value))
-    erros.push("O nome deve conter ao menos três letras, e não pode conter números");
-    
-    if (!validateEmail(inputEmail.value))
-    erros.push("Digite um email válido");
-    
-    if (!validateTelefone(inputTelefone.value))
-    erros.push("O telefone deve ter ao menos 9 números");
+    if (!validateNome(inputName.value)) 
+        erros.push("O nome deve conter ao menos três letras, e não pode conter números");
 
-    if (!validateMsg(textarea.value))
+    if (!validateEmail(inputEmail.value)) 
+        erros.push("Digite um email válido");
+
+    if (!validateTelefone(inputTelefone.value)) 
+        erros.push("O telefone deve ter ao menos 9 números");
+
+    if (!validateMsg(textarea.value)) 
         erros.push("A mensagem deve ter ao menos 5 caracteres");
 
     alerta(erros, event);
-
 });
 
 btnLimpar.addEventListener("click", event => {
@@ -64,24 +63,26 @@ function validateEmail(email) {
 }
 
 function validateMsg(msg) {
-    if(!msg || msg.length<5)
+    if(!msg || msg.length<5) 
         return false;
     return true;
 }
+
 function validateNome(nome) {
     const reg = /[0-9]/;
-    if(!nome || nome.length<3 || reg.test(nome))
+    if(!nome || nome.length<3 || reg.test(nome)) 
         return false;
     return true;
 }
+
 function validateTelefone(telefone) {
-    if (!telefone || isNaN(telefone) || telefone.length < 9)
+    if (!telefone || isNaN(telefone) || telefone.length < 9) 
         return false
     return true
 }
 
 function alerta(erros, event) {
-    if (erros.length > 0){
+    if (erros.length > 0) {
         alert(erros.join("\n"));
         event.preventDefault();
     }

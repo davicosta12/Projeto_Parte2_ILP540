@@ -99,7 +99,7 @@ function checaConexao($conn) {
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "davi10";
 $dbname = "mydb";
 
 // dados do formulário
@@ -129,17 +129,15 @@ if($db) {
   $result = mysqli_query($conn, "SHOW TABLES LIKE '$table'");
   $tableExists = $result && $result->num_rows > 0;
 
-  // Verifica se existe a tabela pelo nome
+  // Verifica se não existe a tabela 
   if (!$tableExists) {
-    // sql para criar a tabela
     $sql = sqlCriaTabela();
     criaTabela($conn, $sql, false);
   }
 
-  // sql para inserir dados na tabela criada
   $sql = sqlInseriDados($nome, $email, $telefone, $msg);
   inseriDados($conn, $sql, $nome, $email, $telefone, $msg, false, $tableExists);
-  
+
   mysqli_close($conn);
 
 } else {
@@ -152,11 +150,9 @@ if($db) {
   // Checa a conexão
   checaConexao($conn);
 
-  // sql para criar a tabela
   $sql = sqlCriaTabela();  
   criaTabela($conn, $sql, true);
   
-  // sql para inserir dados na tabela criada
   $sql = sqlInseriDados($nome, $email, $telefone, $msg);
   inseriDados($conn, $sql, $nome, $email, $telefone, $msg, true);
 
