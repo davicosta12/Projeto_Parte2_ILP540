@@ -1,0 +1,40 @@
+<!-- Davi Silva Costa -->
+<!-- Cod. Mat 20111105-->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <title>Projeto - parte 2</title>
+</head>
+
+<body>
+  <form method="post" action="index.php">
+    <div>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="usuario_nome" maxlength="28" />
+    </div>
+    <div>
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="usuario_email" maxlength="28" />
+    </div>
+    <div>
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" name="usuario_telefone" maxlength="11" />
+    </div>
+    <div>
+      <label for="msg">Mensagem:</label>
+      <textarea id="msg" name="usuario_msg" maxlength="75"></textarea>
+    </div>
+    <div class="button">
+      <button id="btnLimpar">Limpar</button>
+      <button id="btnConfirm" type="submit">Confirmar</button>
+    </div>
+  </form>
+  <script src="index.js"></script>
+</body>
+
+</html>
