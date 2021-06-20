@@ -99,7 +99,7 @@ function checaConexao($conn) {
 
 $servername = "localhost";
 $username = "root";
-$password = "davi10";
+$password = "";
 $dbname = "mydb";
 
 // dados do formulário
